@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Sessions', type: :request do
-  describe 'GET /index' do
-    pending "add some examples (or delete) #{__FILE__}"
+  describe 'POST /login' do
+    context '通常ログイン' do
+      it '通常ログイン' do
+        post login_path
+        expect(response).to have_http_status(:success)
+      end
+    end
   end
 end

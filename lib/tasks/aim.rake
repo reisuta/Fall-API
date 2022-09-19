@@ -6,9 +6,9 @@ namespace :aim do
       f.destroy
     end
     val.each do |title, reason, advantage, genre, difficulty, started_at, ended_at|
-      if started_at.slice(5..6) < Time.now.strftime('%m') && ended_at
-        next
-      end
+      # if started_at.slice(5..6) < Time.now.strftime('%m') && ended_at
+      #   next
+      # end
 
       Aim.create!(
         { title: title, reason: reason, advantage: advantage, genre: genre, difficulty: difficulty, started_at: started_at,

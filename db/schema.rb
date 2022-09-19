@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_100000) do
   end
 
   create_table "aims", force: :cascade do |t|
-    t.integer "future_aim_id", null: false
+    t.integer "future_aim_id"
     t.string "title", null: false, comment: "タイトル"
     t.text "reason", null: false, comment: "理由"
     t.text "advantage", null: false, comment: "得られるもの"

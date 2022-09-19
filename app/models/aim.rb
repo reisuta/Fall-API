@@ -5,7 +5,7 @@ class Aim < ApplicationRecord
   validate :ended_at_validation
   has_many :aim_categories
   has_many :categories, through: :aim_categories
-  belongs_to :future_aim
+  belongs_to :future_aim, optional: true
   enum difficulty: { middle: 0, low: 1, high: 2 }
 end
 
