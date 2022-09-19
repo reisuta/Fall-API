@@ -1,0 +1,105 @@
+ja:
+  title:
+    aim:
+      index: 目標一覧
+      show: 目標詳細
+      new: 目標新規作成
+      edit: 目標編集
+    book:
+      index: 書籍一覧
+      show: 書籍詳細
+      new: 書籍新規作成
+      edit: 書籍編集
+    category:
+      index: カテゴリー一覧
+      show: カテゴリー詳細
+      new: カテゴリー新規作成
+      edit: カテゴリー編集
+    subscription:
+      index: サブスクリプション一覧
+      show: サブスクリプション詳細
+      new: サブスクリプション新規作成
+      edit: サブスクリプション編集
+    mobile_contract:
+      index: スマホ契約一覧
+      show: スマホ契約詳細
+      new: スマホ契約新規作成
+      edit: スマホ契約編集
+  enum:
+    aim:
+      difficulty:
+        low: 低
+        middle: 中
+        high: 高
+  activerecord:
+    attributes:
+      aim:
+        title: タイトル
+        reason: 理由
+        advantage: 得られるもの
+        difficulty: 難易度
+        started_at: 開始日時
+        ended_at: 終了日時
+      book:
+        title: タイトル
+        author: 著者
+        amount: 金額
+        is_library: 図書館フラグ
+        bought_at: 購入日時
+        started_at: 開始日時
+        ended_at: 終了日時
+      category:
+        name: カテゴリー名
+      subscription:
+        name: サブスクリプション名
+        month_cost: 月額料金
+        importance: 重要性
+        alternative: 代替手段
+      mobile_contract:
+        company_name: 契約会社名
+        month_cost: 月額料金
+        cancel_cost: 解約金
+        contract_detail: 契約詳細
+        started_at: 開始日時
+        ended_at: 終了日時
+    errors:
+      models:
+        aim:
+          attributes:
+            title:
+              blank: は必須項目です
+            reason:
+              blank: は必須項目です
+            advantage:
+              blank: は必須項目です
+        book:
+          attributes:
+            title:
+              blank: は必須項目です
+            author:
+              blank: は必須項目です
+            amount:
+              blank: は必須項目です
+        category:
+          attributes:
+            name:
+              blank: は必須項目です
+        subscription:
+          attributes:
+            name:
+              blank: は必須項目です
+            month_cost:
+              blank: は必須項目です
+        mobile_contract:
+          attributes:
+            company_name:
+              blank: は必須項目です
+            month_cost:
+              blank: は必須項目です
+            contract_detail:
+              blank: は必須項目です
+
+
+
+
+

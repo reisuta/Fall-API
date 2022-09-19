@@ -1,0 +1,59 @@
+<% provide(:title, t('title.book.index')) %>
+<h3 class="mt-3 text-center"><%= t('title.book.index')%></h3>
+
+<div class="d-flex justify-content-end">
+  <%= link_to "新規作成", new_book_path, class: 'mb-3 btn btn-primary' %>
+</div>
+
+<%= search_form_for @q, class: 'row g-3', url: books_path do |f| %>
+  <div class="col-md-4">
+    <%= f.label :title_cont, '書籍名', class: 'form-label' %>
+    <%= f.search_field :title_cont, class: 'form-control' %>
+    
+    <%= f.label :started_at_gteq, '開始日時', class: 'form-label' %>
+    <%= f.datetime_field :started_at_gteq, class: 'form-control' %>
+  </div>
+
+  <div class="col-md-4">
+    <%= f.label :author_cont, '著者', class: 'form-label' %>
+    <%= f.search_field :author_cont, class: 'form-control' %>
+
+    <%= f.label :ended_at_lteq, '終了日時', class: 'form-label' %>
+    <%= f.datetime_field :ended_at_lteq, class: 'form-control' %>
+  </div>
+
+  <div class="col-md-4">
+    <%= f.label :amount_cont, '金額', class: 'form-label' %>
+    <%= f.number_field :amount_cont, class: 'form-control' %>
+    
+  </div>
+  <div class="d-flex justify-content-center mb-3">
+    <%= f.submit "クリア", type: :reset, class: 'btn btn-light' %>
+    <%= f.submit '検索', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<table class="mt-3 table table-bordered">
+  <tr>
+    <th><%= sort_link(@q, :title, '書籍名', class: 'nav-link') %></th>
+    <th><%= sort_link(@q, :author, '著者', class: 'nav-link') %></th>
+    <th><%= sort_link(@q, :amount, '金額', class: 'nav-link') %></th>
+    <th><%= sort_link(@q, :started_at, '開始日時', class: 'nav-link') %></th>
+    <th><%= sort_link(@q, :ended_at, '終了日時', class: 'nav-link') %></th>
+    <th>編集</th>
+    <th>削除</th>
+  </tr>
+  
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= link_to book.title, book_path(book), class: 'nav-link' %></td>
+      <td><%= book.author %></td>
+      <td><%= book.amount %></td>
+      <td><%= book.started_at %></td>
+      <td><%= book.ended_at %></td>
+      <td><%= link_to '編集', edit_book_path(book.id), class: 'btn btn-primary' %></td>
+      <td><%= button_to '削除', book_path(book.id), method: :delete, form:{ data: { turbo_confirm: "目標を削除します。よろしいですか？" }}, class: 'btn btn-danger' %></td>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @books %>

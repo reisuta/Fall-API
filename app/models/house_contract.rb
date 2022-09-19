@@ -1,0 +1,2 @@
+class HouseContract < ApplicationRecord
+end

@@ -1,0 +1,64 @@
+<% provide(:title, t('title.mobile_contract.index')) %>
+<h3 class="mt-3 text-center"><%= t('title.mobile_contract.index')%></h3>
+
+<div class="d-flex justify-content-end">
+  <%= link_to "新規作成", new_mobile_contract_path, class: 'mb-3 btn btn-primary' %>
+</div>
+
+<%= search_form_for @q, class: 'row g-3', url: mobile_contracts_path do |f| %>
+  <div class="col-md-4">
+    <%= f.label :company_name_cont, '契約会社名', class: 'form-label' %>
+    <%= f.search_field :company_name_cont, class: 'form-control' %>
+
+    <%= f.label :started_at_gteq, '開始日時', class: 'form-label' %>
+    <%= f.datetime_field :started_at_gteq, class: 'form-control' %>
+  </div>
+
+  <div class="col-md-4">
+    <%= f.label :cancel_cost_cont, '解約金', class: 'form-label' %>
+    <%= f.text_area :cancel_cost_cont, class: 'form-control' %>
+
+    <%= f.label :ended_at_lteq, '終了日時', class: 'form-label' %>
+    <%= f.datetime_field :ended_at_lteq, class: 'form-control' %>
+  </div>
+
+  <div class="col-md-4">
+  
+    <%= f.label :month_cost_cont, '月額料金', class: 'form-label' %>
+    <%= f.search_field :month_cost_cont, class: 'form-control' %>
+    
+    <%= f.label :contract_detail_cont, '契約詳細', class: 'form-label' %>
+    <%= f.search_field :contract_detail_cont, class: 'form-control' %>
+  </div>
+  <div class="d-flex justify-content-center mb-3">
+    <%= f.submit "クリア", type: :reset, class: 'btn btn-light' %>
+    <%= f.submit '検索', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<table class="mt-3 table table-bordered">
+  <tr>
+    <th><%= sort_link(@q, :title, '契約会社名', class: 'nav-link') %></th>
+    <th><%= sort_link(@q, :reason, '月額料金', class: 'nav-link') %></th>
+    <th><%= sort_link(@q, :advantage, '解約金', class: 'nav-link') %></th>
+    <th><%= sort_link(@q, :difficulty, '契約詳細', class: 'nav-link') %></th>
+    <th><%= sort_link(@q, :started_at, '開始日時', class: 'nav-link') %></th>
+    <th><%= sort_link(@q, :ended_at, '終了日時', class: 'nav-link') %></th>
+    <th>編集</th>
+    <th>削除</th>
+  </tr>
+  
+  <% @mobile_contracts.each do |mobile_contract| %>
+    <tr>
+      <td><%= link_to mobile_contract.company_name, mobile_contract_path(mobile_contract), class: 'nav-link' %></td>
+      <td><%= mobile_contract.month_cost %></td>
+      <td><%= mobile_contract.cancel_cost %></td>
+      <td><%= mobile_contract.contract_detail %></td>
+      <td><%= mobile_contract.started_at %></td>
+      <td><%= mobile_contract.ended_at %></td>
+      <td><%= link_to '編集', edit_mobile_contract_path(mobile_contract.id), class: 'btn btn-primary' %></td>
+      <td><%= button_to '削除', mobile_contract_path(mobile_contract.id), method: :delete, form:{ data: { turbo_confirm: "スマホ契約を削除します。よろしいですか？" }}, class: 'btn btn-danger' %></td>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @mobile_contracts %>

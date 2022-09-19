@@ -1,0 +1,2 @@
+class IdealShape < ApplicationRecord
+end
