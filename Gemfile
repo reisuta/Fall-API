@@ -21,6 +21,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'google-api-client', '0.7'
 gem "google_drive"
+gem 'bcrypt'
 
 gem "image_processing", "~> 1.2"
 
