@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_02_100000) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_24_074501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_100000) do
   end
 
   create_table "aims", force: :cascade do |t|
-    t.integer "future_aim_id", null: false
+    t.integer "future_aim_id"
     t.string "title", null: false, comment: "タイトル"
     t.text "reason", null: false, comment: "理由"
     t.text "advantage", null: false, comment: "得られるもの"
@@ -128,6 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_100000) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end

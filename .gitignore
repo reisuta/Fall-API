@@ -30,8 +30,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+/config/credentials/test.key
 /config/credentials/development.key
 /config/credentials/
 /config/credentials/production.key
 config.json
 .env
+

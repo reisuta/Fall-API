@@ -1,3 +1,8 @@
+Google spreadsheetの内容を反映
+ docker compose exec web rake aim:aim
+ docker compose exec web rake subscription:subscription
+ docker compose exec web rake todo:todo
+
 機能
 ・行きたい店リスト
 ・ログイン機能
@@ -7,5 +12,7 @@
 ・性格診断との連携
 ・日記機能
 ・漢検勉強機能
+
+
 
 

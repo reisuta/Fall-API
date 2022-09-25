@@ -12,21 +12,29 @@
   <body>
 
     <header class="navbar navbar-expand-sm navbar-light bg-light">
-      <% if current_user %>
-        <%= image_tag current_user.image %>
-        <%= current_user.name %>さん
-        <%= link_to "ログアウト", log_out_path %>
-      <% else  %>
-        ゲストさん
-        <%= button_to "Googleでログイン", "/auth/google_oauth2", method: :post, data: { turbo: false } %>
-      <% end %>
-
       <div class="container">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-              <%= link_to "ホーム", aims_path, class: "nav-link" %>
-            </li>
-        </ul>
+        <%= link_to "ホーム", aims_path, class: "nav-link" %>
+        <nav>
+          <div class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <% if current_user.image %>
+                <%= image_tag current_user.image %>
+              <% end %>
+              <%= current_user.name %>さん
+              <%= link_to "ログアウト", log_out_path, class: "nav-link" %>
+            <% else  %>
+              <li class="navbar">
+                ゲストさん
+              </li>
+              <li class="navbar">
+                <%= button_to "ログイン", "/login", method: :get, data: { turbo: false }, class: "btn btn-primary" %>
+              </li>
+              <li class="navbar">
+                <%= button_to "Googleでログイン", "/auth/google_oauth2", method: :post, data: { turbo: false }, class: "btn btn-secondary" %>
+              </li>
+            <% end %>
+          </div>
+        </nav>
       </div>
     </header>
 
